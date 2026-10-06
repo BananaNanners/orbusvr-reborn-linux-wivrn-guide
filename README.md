@@ -4,6 +4,8 @@ A tested setup for running **OrbusVR: Reborn Community Edition** on Linux using 
 
 This guide was tested on **CachyOS (Arch Linux-based)** with an NVIDIA GPU, but the same approach should be useful on other modern Linux distributions using Steam/Proton and WiVRn.
 
+There is also a **community-reported Steam Frame standalone setup** further down the page. That setup is separate from the WiVRn PC instructions.
+
 ## ✅ Working result
 
 This setup successfully provides:
@@ -239,6 +241,59 @@ Not used for OrbusVR on the tested system
 
 ---
 
+## Steam Frame standalone (community reported)
+
+A Steam Frame tester reported that the **OrbusVR Reborn Community PC client works directly on the headset**.
+
+> **Status:** Community reported. This has not yet been personally verified by the repo author.
+
+### Simple setup
+
+From **Steam Frame Desktop Mode**:
+
+1. Download and extract `OrbusVR-Reborn-Community-PC.zip`.
+2. Open Steam.
+3. Choose **Games → Add a Non-Steam Game to My Library**.
+4. Select `vrclient.exe`.
+5. Open **Properties → Compatibility**.
+6. Enable **Force the use of a specific Steam Play compatibility tool**.
+7. Select **Proton Experimental**.
+8. Launch OrbusVR.
+
+That's it. SteamOS handles the Windows compatibility work automatically.
+
+### Reported result
+
+- ✅ Runs standalone on Steam Frame
+- ✅ No gaming PC required
+- ✅ No PC streaming required
+- ✅ Proton Experimental works
+- ⚠️ **Low graphics settings** are currently recommended
+
+### Do not copy the WiVRn launch options to Steam Frame
+
+The Steam Frame setup does **not** need the PC-specific launch option from earlier in this guide.
+
+Do not add:
+
+```bash
+PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 VR_OVERRIDE=/home/YOUR_USER/Applications/OpenComposite %command%
+```
+
+For the reported Steam Frame setup, leave **Launch Options empty** unless you are troubleshooting a separate problem.
+
+You also do not need to set up WiVRn or OpenComposite for this standalone method.
+
+> **WiVRn on Steam Frame?** Not needed — the VR PC is literally on your face. 😆
+
+### About FEX
+
+You may see Steam Frame discussions mention **FEX**. You do not need to install or select it separately.
+
+Just choose **Proton Experimental** in Steam. SteamOS handles the rest in the background.
+
+---
+
 ## Black screen after selecting a character
 
 This was the main issue encountered during testing.
@@ -298,7 +353,7 @@ After forcing OpenComposite, the world rendered normally and controllers/audio c
 
 ---
 
-## Things that were NOT required
+## Things that were NOT required for the WiVRn PC setup
 
 The working configuration does **not** require:
 
@@ -379,9 +434,9 @@ Also make sure SteamVR is not being launched unnecessarily.
 
 ---
 
-## Tested result
+## Tested result: CachyOS + WiVRn
 
-With the configuration above:
+With the WiVRn PC configuration above:
 
 - ✅ OrbusVR launches in VR
 - ✅ The world renders normally
