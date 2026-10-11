@@ -394,8 +394,6 @@ cp "/path/to/identity.dat" ~/Documents/OrbusVR-Backups/reborn-identity.dat
 
 Keep this file backed up before recreating or deleting a Proton prefix.
 
-
-
 ---
 
 ## Quest 3 standalone: install the Reborn client with Quest APK Installer
