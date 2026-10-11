@@ -4,7 +4,7 @@ A tested setup for running **OrbusVR: Reborn Community Edition** on Linux using 
 
 This guide was tested on **CachyOS (Arch Linux-based)** with an NVIDIA GPU, but the same approach should be useful on other modern Linux distributions using Steam/Proton and WiVRn.
 
-There is also a **community-reported Steam Frame standalone setup** further down the page. That setup is separate from the WiVRn PC instructions.
+There is also a **Quest 3 standalone installation guide** using Quest APK Installer, plus a **community-reported Steam Frame standalone setup**. Both are separate from the WiVRn PC instructions.
 
 ## ✅ Working result
 
@@ -394,6 +394,62 @@ cp "/path/to/identity.dat" ~/Documents/OrbusVR-Backups/reborn-identity.dat
 
 Keep this file backed up before recreating or deleting a Proton prefix.
 
+
+
+---
+
+## Quest 3 standalone: install the Reborn client with Quest APK Installer
+
+This is an on-headset way to install the Community Edition Quest client without using SideQuest Desktop for every file. It follows the Quest APK Installer setup shown in the walkthrough.
+
+**Important:** The Quest client needs **two files**: the game APK and its matching OBB data file. Installing only the APK may leave the game without its required data.
+
+### A. Install Quest APK Installer on the headset
+
+[Quest APK Installer by Anagan79](https://anagan79.itch.io/quest-apk-installer) is a paid, third-party utility (check the itch.io page for its current price). It is not part of OrbusVR.
+
+1. On the Quest 3, open the built-in **Browser** and visit the Quest APK Installer page. Purchase/download the APK. The page currently lists `QuestAPKInstaller_1.2.2.apk`; the filename may change with future versions.
+2. Open the Quest **Files** app and find the downloaded APK under **Downloads** or **Recent**. Select it and confirm **Install** in the system prompt.
+3. Open your Quest app library and select **Unknown Sources** from the app filter/menu. Launch **Quest APK Installer**.
+4. Grant the app permission to read files when prompted.
+5. If Android opens an **Install unknown apps** settings screen, enable **Allow from this source** for Quest APK Installer, then return to the app.
+
+If the headset blocks the initial installer APK, use a supported sideloading setup such as the official [SideQuest method](https://github.com/orbusvr-community/reborn-server#installing-the-game-client) or the upstream [ADB instructions](https://github.com/orbusvr-community/reborn-server#installing-on-quest-with-adb).
+
+### B. Download the two OrbusVR Quest files
+
+On the Quest Browser, open the [OrbusVR Reborn Community Edition releases](https://github.com/orbusvr-community/reborn-server/releases) page. Open the latest release and download both of these **release assets**:
+
+- `OrbusVR-Reborn-Community-Quest.apk`
+- The matching `main.<versionCode>.com.orbusvr.OrbusVRCommunity.obb` file
+
+For example, the release currently lists `main.236.com.orbusvr.OrbusVRCommunity.obb`. Use the OBB included with the same release as the APK; version codes and filenames may change.
+
+Do **not** download the PC ZIP or the repository's source-code archives for the Quest installation. Keep both downloaded files on the headset. The Downloads folder is a convenient place; Quest APK Installer scans storage for supported files.
+
+### C. Install the APK and OBB
+
+1. Open **Quest APK Installer**. If the two files do not appear, check that the downloads finished and that file access is allowed.
+2. Find `OrbusVR-Reborn-Community-Quest.apk`, choose its install action, and confirm Android's install prompt.
+3. Find the matching `.obb` file and use Quest APK Installer's OBB install/copy action. Version 1.2.x supports standalone OBB files; follow the in-app prompts so the data file is placed in the game's OBB folder.
+4. Leave the OBB filename unchanged. The expected destination is:
+
+       Android/obb/com.orbusvr.OrbusVRCommunity/
+
+5. Wait for the installer to finish before launching the game.
+
+### D. Launch OrbusVR
+
+1. Open the Quest app library and select **Unknown Sources**.
+2. Launch **OrbusVR Reborn Community Edition**.
+3. Allow microphone access if prompted and you want to use in-game voice chat.
+4. At the server picker on the character-selection screen, enter the address of the community server you want to join.
+
+The client download does not host a server by itself; you need an available server address.
+
+> **Already have Quest characters?** Back up your Quest `identity.dat` before uninstalling the game or clearing its data. Characters are tied to this identity file. See [Quest 3 standalone: transfer your PC characters](#quest-3-standalone-transfer-your-pc-characters) for the file location and backup guidance.
+
+---
 
 ---
 
