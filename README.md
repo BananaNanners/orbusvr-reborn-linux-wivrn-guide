@@ -394,6 +394,50 @@ cp "/path/to/identity.dat" ~/Documents/OrbusVR-Backups/reborn-identity.dat
 
 Keep this file backed up before recreating or deleting a Proton prefix.
 
+
+---
+
+## Quest 3 standalone: transfer your PC characters
+
+**Tested result:** Copying the PC Proton client's `identity.dat` into the Quest 3 standalone client's files folder made the PC characters appear on the Quest 3.
+
+This transfers the Community Edition identity/character association. Do not assume it also transfers other local settings or files.
+
+### Quest 3 destination
+
+Connect the Quest 3 to your Linux PC by USB, unlock the headset, allow file access if prompted, and open it in your file manager. Navigate to:
+
+    Quest 3/Internal shared storage/Android/data/com.orbusvr.OrbusVRCommunity/files/identity.dat
+
+### Transfer steps
+
+1. **Close OrbusVR** on both the PC and the Quest.
+2. **Back up the Quest's existing identity first.** Create a backup folder on your PC:
+
+       mkdir -p "$HOME/Documents/OrbusVR-Backups"
+
+   In the file manager, copy the Quest's existing `identity.dat` into that folder and name the copy `Quest-original-identity.dat`. Keep this backup in case you want to restore the Quest's original identity.
+3. **Find the PC Proton identity file.** Run:
+
+       find "$HOME/.local/share/Steam" "$HOME/.steam/steam" \
+         -type f -path "*/drive_c/users/steamuser/AppData/LocalLow/Orbus Online, LLC/OrbusVR/identity.dat" \
+         -print 2>/dev/null
+
+   Use the file belonging to your **OrbusVR Reborn Community Edition** Steam shortcut. The generated Steam compatdata AppID can differ between installations, so do not assume a fixed AppID.
+4. **Make a separate PC backup.** Replace the example path below with the PC identity file found in the previous step:
+
+       cp "/full/path/to/PC/identity.dat" "$HOME/Documents/OrbusVR-Backups/PC-Reborn-identity.dat"
+
+5. **Copy the PC identity to the Quest.** In the file manager, copy `PC-Reborn-identity.dat` into the Quest destination folder above, and name it `identity.dat`. Confirm replacement only after checking that the original Quest file has been backed up.
+6. **Safely disconnect the Quest** and launch the standalone OrbusVR Community Edition.
+7. **Verify your characters** appear. The transfer was tested successfully with the PC characters appearing on Quest 3.
+
+### If you need to undo the transfer
+
+Close OrbusVR, then copy `Quest-original-identity.dat` back into the Quest destination folder and name it `identity.dat`.
+
+You do **not** need to transfer `output_log.txt`; it is a diagnostic log, not required for character identity transfer.
+
 ---
 
 ## Reborn vs. Preborn / Classic
